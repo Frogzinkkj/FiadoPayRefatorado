@@ -1,7 +1,7 @@
 package com.example.FiadoPayRefatorado.domain.enums;
 
 public enum PaymentStatus {
-  PEDING,
+  PENDING,
   PROCESSING,
   APROVED,
   DECLINED,
