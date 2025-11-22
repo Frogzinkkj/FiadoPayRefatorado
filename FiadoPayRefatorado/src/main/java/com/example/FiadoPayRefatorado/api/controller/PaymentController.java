@@ -14,37 +14,39 @@ import java.util.UUID;
 @RestController
 @RequestMapping("/payment")
 public class PaymentController {
-  private final PaymentService service;
-  private final PaymentMapper mapper;
+    private final PaymentService service;
+    private final PaymentMapper mapper;
 
-  public PaymentController(PaymentService service, PaymentMapper mapper) {
-    this.service = service;
-    this.mapper = mapper;
-  }
-
-  @PostMapping
-  @AuthCheck(name = "RiskAnalysis", threshold = 1000.0)
-  public ResponseEntity<PaymentResponseDTO> create(@RequestBody CreatePaymentDTO dto, @RequestHeader(value = "Idempotency-Key", required = false) String idempotencyKey) {
-    Payment payment = mapper.toDomain(dto);
-    if (idempotencyKey != null) {
-      payment.setIdempotencyKey(idempotencyKey);
+    public PaymentController(PaymentService service, PaymentMapper mapper) {
+        this.service = service;
+        this.mapper = mapper;
     }
-    Payment processedPayment = service.createPayment(payment);
 
-    PaymentResponseDTO response = mapper.toResponse(processedPayment);
+    @PostMapping
+    @AuthCheck(name = "RiskAnalysis", threshold = 1000.0)
+    public ResponseEntity<PaymentResponseDTO> create(@RequestBody CreatePaymentDTO dto,
+                                                     @RequestHeader(value = "Idempotency-Key", required = false)
+                                                     String idempotencyKey) {
+
+        Payment payment = mapper.toDomain(dto);
+
+        if (idempotencyKey != null) {
+            payment.setIdempotencyKey(idempotencyKey);
+        }
+        Payment processedPayment = service.createPayment(payment);
+
+        PaymentResponseDTO response = mapper.toResponse(processedPayment);
 
 
-    return ResponseEntity.ok(response);
+        return ResponseEntity.ok(response);
 
-  }
+    }
 
-  @GetMapping("/{id}")
-  public ResponseEntity<PaymentResponseDTO> getById(@PathVariable UUID id) {
+    @GetMapping("/{id}")
+    public ResponseEntity<PaymentResponseDTO> getById(@PathVariable UUID id) {
 
-    return ResponseEntity.notFound().build();
-  }
-
-
+        return ResponseEntity.notFound().build();
+    }
 
 
 }
