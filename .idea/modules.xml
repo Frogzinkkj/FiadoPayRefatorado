@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/FiadoPayRefatorado.iml" filepath="$PROJECT_DIR$/.idea/FiadoPayRefatorado.iml" />
+      <module fileurl="file://$PROJECT_DIR$/FiadoPayRefatorado/FiadoPayRefatorado.iml" filepath="$PROJECT_DIR$/FiadoPayRefatorado/FiadoPayRefatorado.iml" />
     </modules>
   </component>
 </project>
