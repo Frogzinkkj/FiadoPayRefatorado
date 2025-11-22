@@ -136,7 +136,3 @@ Foi feita a criação de DTOs (Request/Response) para desacoplar a API do Domín
 `@AntiFraud`: marca beans que atuam como regras na análise de fraudes.                                     
 `@PaymentMethod`: para associar um PaymentProcessor a um PaymentMethodType específico (ex: CARD, PIX), permitindo a seleção dinâmica do processador.           
 `@WebhookSink: marca métodos específicos dentro de um bean que devem ser invocados para processar eventos de webhook`.
-
-## Padrões aplicados
-
-## Limites conhecidos
