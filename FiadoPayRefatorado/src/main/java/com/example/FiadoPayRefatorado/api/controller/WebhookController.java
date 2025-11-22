@@ -25,7 +25,7 @@ public class WebhookController {
       @RequestBody String payload
   ) {
 
-    if (signature == null || !signature.equals("sopa")) {
+    if (signature == null || !signature.equals("batata")) {
       return ResponseEntity.status(401).build();
     }
 
